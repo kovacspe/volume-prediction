@@ -25,3 +25,8 @@ class Dataset:
 
     def get_year(self, year):
         return self.data[self.data['year'] == year]
+
+    def get_subset(self, start='2000-01-01', end='2018-12-31'):
+        start = dt.date.fromisoformat(start)
+        end = dt.date.fromisoformat(end)
+        return self.data[(self.data['Date'] >= start) & (self.data['Date'] <= end)]
